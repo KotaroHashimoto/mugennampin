@@ -8,14 +8,11 @@
 #property version   "1.00"
 #property strict
 
-// この番号の口座番号のアカウントでなければ稼働しない
-const int Account_Number = 12345678;
-
-input int Magic_Number = 1; //マジックナンバー
-input double Entry_Lot = 0.01; //エントリーロットサイズ
-input double Nampin_Span = 0.1; //ナンピン幅
-input double Take_Profit = 1000; //トレーリングストップ幅（円）
-input double Max_Positions = 100; //最大ポジション数
+input int Magic_Number = 1;
+input double Entry_Lot = 0.01;
+input double Nampin_Span = 0.1;
+input double Take_Profit = 1000;
+input double Max_Positions = 20;
 
 string thisSymbol;
 
@@ -55,11 +52,6 @@ void OnDeinit(const int reason)
 void OnTick()
   {
 //---
-
-  if(AccountNumber() != Account_Number) {
-    Print("Account Number mismatch. No operation.: ", Account_Number);
-    return;
-  }
 
   double longProfit = 0;
   int longNum = 0;
